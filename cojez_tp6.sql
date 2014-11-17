@@ -6,9 +6,16 @@ CREATE VIEW Participations AS
 	UNION
 	SELECT realisateur AS aid, fid FROM Films) AS P1 GROUP BY aid;
 SELECT artiste, nbpart FROM Participations WHERE nbpart >= ALL (SELECT nbpart FROM Participations); 
+
 --E1Q2
 UPDATE Films
 	SET genre = 'film d''action'
 	WHERE fid IN
 	 	(SELECT fid FROM Roles
 	 	 	WHERE protagoniste);
+
+--E1Q3
+SELECT aid FROM Roles WHERE
+	NOT protagoniste;
+
+
