@@ -32,5 +32,3 @@ UPDATE Films
 	SET genre = 'film national'
 	WHERE fid IN
 	 	(SELECT fid FROM FilmNational);
-
---E1Q5
