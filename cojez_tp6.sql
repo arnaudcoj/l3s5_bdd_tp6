@@ -18,4 +18,19 @@ UPDATE Films
 SELECT aid FROM Roles WHERE
 	NOT protagoniste;
 
+--E1Q4
+CREATE VIEW ArtisteFrancais AS
+	SELECT aid FROM Artists WHERE nationalite='francais';
 
+CREATE VIEW FilmNational AS
+SELECT fid FROM Films WHERE realisateur IN
+	(SELECT aid AS realisateur FROM ArtisteFrancais)
+UNION
+SELECT fid FROM Roles WHERE protagoniste AND aid IN (SELECT aid FROM ArtisteFrancais);
+
+UPDATE Films
+	SET genre = 'film national'
+	WHERE fid IN
+	 	(SELECT fid FROM FilmNational);
+
+--E1Q5
