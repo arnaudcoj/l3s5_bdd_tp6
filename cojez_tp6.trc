@@ -1,0 +1,4 @@
+--Arnaud Cojez, L3S5, G4
+
+--E1Q5
+{t | \exists t1 \in Films, \exists t2 \in Roles ((t[artiste]=t1[realisateur] \or t[artiste]=t2[aid]) \and (t2[fid]=t1[fid]) \and (t1[an]>=2000) \and (t1[an] <=2010)) }

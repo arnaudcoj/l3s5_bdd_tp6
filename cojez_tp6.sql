@@ -32,3 +32,11 @@ UPDATE Films
 	SET genre = 'film national'
 	WHERE fid IN
 	 	(SELECT fid FROM FilmNational);
+
+--E1Q5
+CREATE VIEW Films20002010 AS
+SELECT fid FROM Films WHERE '2000-01-01' <= an AND an <= '2010-12-31';
+
+SELECT realisateur AS artiste FROM Films WHERE fid IN (SELECT * FROM Films20002010)
+UNION
+SELECT aid AS artiste FROM Roles WHERE fid IN (SELECT * FROM Films20002010);
